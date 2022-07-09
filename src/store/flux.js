@@ -1,7 +1,7 @@
 const getState = ({getStore, setStore}) => {
     return {
         store: {
-            name: "Hola! Valentina!",
+            name: "Rick and Morty App",
             singleCharacter: {},
             characters: [],
         },

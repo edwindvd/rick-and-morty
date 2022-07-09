@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom'
 
 import { Context } from '../store/appContext';
+import Card from './Card.js';
 
 export const Home = () => {
 
@@ -13,17 +13,15 @@ export const Home = () => {
   }, [])
 
   return (
-    <div style={{background: 'white'}}>
-      <h1>{ store.name } </h1>
-      { store.characters.map(character => {
-          return <div key={character.id} style={{ marginTop: '3rem'}}>
-            <img src={character.image} alt={character.name} />
-            <h2>{character.name}</h2>
-            <p>{character.gender}</p>
-            <Link to={`/character/${character.id}`}>See profile</Link>
-          </div>
+    <div style={{ background: 'white' }} className="w-full h-full flex flex-col text-center">
+      <h1 className='text-6xl my-8'>{store.name} </h1>
+      <div className='flex flex-wrap '>
+
+        {store.characters.map(character => {
+          return <Card key={character.id} character={character} />
         })
-      }
+        }
+      </div>
     </div>
   )
 }
