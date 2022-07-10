@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { Context } from '../store/appContext';
+import Favorite from './Favorite.js';
 
 
 export const Profile = () => {
@@ -16,9 +17,13 @@ export const Profile = () => {
     actions.getCharacterById(id)
   }, [id, actions])
 
-  const handlerNext = () => (store.singleCharacter.id <= store.characters.length) ? navigate(`/character/${parseInt(id) + 1}`, { replace: true }) : undefined
+  const handlerNext = () => (store.singleCharacter.id < store.info.count) ? navigate(`/character/${parseInt(id) + 1}`, { replace: true }) : undefined
 
   const handlerPrev = () => (store.singleCharacter.id > 1) ? navigate(`/character/${parseInt(id) - 1}`, { replace: true }) : undefined
+
+  const handleFav = () => {
+    actions.addFavorite(store.singleCharacter)
+  }
 
   return (
     <div className='w-full h-screen flex flex-col text-center'>
@@ -31,11 +36,10 @@ export const Profile = () => {
           <h2 className='font'>{store.singleCharacter.gender}</h2>
           <div>
             {(parseInt(id) !== 1) && <button className="btn-primary" onClick={handlerPrev}>prev</button>}
-            {(parseInt(id) <= store.characters.length - 1) && <button className="btn-primary" onClick={handlerNext}>next</button>}
+            {(parseInt(id) < store.info.count) && <button className="btn-primary" onClick={handlerNext}>next</button>}
             <Link to="/" className="btn-primary"> volver </Link>
             <button className="btn-primary my-auto" onClick={() => navigate(-1)}>Home</button>
-            <button className="btn-primary align-center material-icons text-sm">favorite
-            </button>
+            <Favorite char={store.singleCharacter}/>
           </div>
         </div>
       </>
