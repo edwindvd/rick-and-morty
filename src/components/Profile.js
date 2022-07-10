@@ -21,10 +21,6 @@ export const Profile = () => {
 
   const handlerPrev = () => (store.singleCharacter.id > 1) ? navigate(`/character/${parseInt(id) - 1}`, { replace: true }) : undefined
 
-  const handleFav = () => {
-    actions.addFavorite(store.singleCharacter)
-  }
-
   return (
     <div className='w-full h-screen flex flex-col text-center'>
       {(!store.singleCharacter) ? <h1>Cargando</h1> : ""}

@@ -51,7 +51,7 @@ const getState = ({getStore, setStore}) => {
             },
             addFavorite: (newfav)=> {
                 const store = getStore();
-                let search = store.favorites.find( x => x.id == newfav.id)
+                let search = store.favorites.find( x => x.id === newfav.id)
                 if(!search){
                     setStore({ ...store, favorites: [ ...store.favorites, newfav ]})
                 }
@@ -59,7 +59,7 @@ const getState = ({getStore, setStore}) => {
             removeFavorite: (target) => {
                 const store = getStore();
                 setStore({ ...store, 
-                    favorites: [ ...store.favorites].filter( char => char.id != target.id) 
+                    favorites: [ ...store.favorites].filter( char => char.id !== target.id) 
                 })
             }
         }

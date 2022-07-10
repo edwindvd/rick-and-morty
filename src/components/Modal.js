@@ -26,7 +26,7 @@ export const Modal = (props) => {
                     </div>
                     <div className="p-6 space-y-6">
                         <ul>
-                            { store.favorites.length == 0 && <h1>No records</h1> }
+                            { store.favorites.length === 0 && <h1>No records</h1> }
                             {store.favorites.map((fav) => 
                             (<li className="w-full flex flex-row" key={fav.id}>
                                 <h3 className='font-bold mx-auto'>

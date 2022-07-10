@@ -1,18 +1,9 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "react";
-import { Context } from "../store/appContext";
 import Favorite from "./Favorite";
 
 export default function Card(props) {
-  const { store, actions } = useContext(Context);
-
-  const isFavorite = (id) => {
-    let character = store.favorites.find( x => x.id == id)
-    if(character) 
-      return true
-    return false
-  }
 
   return (
     <>

@@ -7,7 +7,7 @@ const Favorite = (props) => {
     const { store, actions } = useContext(Context);
 
     const isFavorite = (id) => {
-        let character = store.favorites.find( x => x.id == id)
+        let character = store.favorites.find( x => x.id === id)
         if(character) 
           return true
         return false
